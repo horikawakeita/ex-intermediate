@@ -36,13 +36,20 @@ public class HotelController {
 	/**
 	 * ホテル検索画面を表示するメソッド.
 	 * 
-	 * @return
+	 * @return 検索画面
 	 */
 	@RequestMapping("/search")
 	public String search() {
 		return "search";
 	}
 
+	/**
+	 * ホテルを検索して表示するメソッド.
+	 * 
+	 * @param form 入力された値の入ったフォーム
+	 * @param model requestスコープに格納するためのオブジェクト
+	 * @return 検索画面
+	 */
 	@RequestMapping("/show-hotel")
 	public String showHotel(HotelForm form, Model model) {
 		model.addAttribute("hotelList", service.searchByLessThanPrice(form.getPrice()));
